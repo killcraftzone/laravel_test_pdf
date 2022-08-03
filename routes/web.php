@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Knp\Snappy\Pdf;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/index', function() {
+    return view('index');
+});
+
+Route::get('/invoice', function() {
+    //return view('invoice');
+
+    $pdf = PDF::loadView('invoice');
+    return $pdf->download('invoice.pdf');
+});
+
